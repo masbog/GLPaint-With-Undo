@@ -19,6 +19,10 @@
 		2831246918C8D1590091E583 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831245118C8D1590091E583 /* UIKit.framework */; };
 		2831247118C8D1590091E583 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2831246F18C8D1590091E583 /* InfoPlist.strings */; };
 		2831247318C8D1590091E583 /* DrawingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831247218C8D1590091E583 /* DrawingTests.m */; };
+		2831248018C8D1880091E583 /* MASViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831247E18C8D1880091E583 /* MASViewController.m */; };
+		2831248118C8D1880091E583 /* MASViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2831247F18C8D1880091E583 /* MASViewController.xib */; };
+		2831248518C8D87E0091E583 /* MASIndicatorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831248418C8D87E0091E583 /* MASIndicatorButton.m */; };
+		2831248718C8DD6C0091E583 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831248618C8DD6C0091E583 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,12 @@
 		2831246E18C8D1590091E583 /* DrawingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DrawingTests-Info.plist"; sourceTree = "<group>"; };
 		2831247018C8D1590091E583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2831247218C8D1590091E583 /* DrawingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawingTests.m; sourceTree = "<group>"; };
+		2831247D18C8D1880091E583 /* MASViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewController.h; sourceTree = "<group>"; };
+		2831247E18C8D1880091E583 /* MASViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewController.m; sourceTree = "<group>"; };
+		2831247F18C8D1880091E583 /* MASViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASViewController.xib; sourceTree = "<group>"; };
+		2831248318C8D87E0091E583 /* MASIndicatorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASIndicatorButton.h; sourceTree = "<group>"; };
+		2831248418C8D87E0091E583 /* MASIndicatorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASIndicatorButton.m; sourceTree = "<group>"; };
+		2831248618C8DD6C0091E583 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2831248718C8DD6C0091E583 /* QuartzCore.framework in Frameworks */,
 				2831245018C8D1590091E583 /* CoreGraphics.framework in Frameworks */,
 				2831245218C8D1590091E583 /* UIKit.framework in Frameworks */,
 				2831244E18C8D1590091E583 /* Foundation.framework in Frameworks */,
@@ -96,6 +107,7 @@
 		2831244C18C8D1590091E583 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2831248618C8DD6C0091E583 /* QuartzCore.framework */,
 				2831244D18C8D1590091E583 /* Foundation.framework */,
 				2831244F18C8D1590091E583 /* CoreGraphics.framework */,
 				2831245118C8D1590091E583 /* UIKit.framework */,
@@ -107,6 +119,8 @@
 		2831245318C8D1590091E583 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				2831248218C8D8560091E583 /* MASIndicatorButton */,
+				2831247C18C8D1630091E583 /* MASViewController */,
 				2831245C18C8D1590091E583 /* MASAppDelegate.h */,
 				2831245D18C8D1590091E583 /* MASAppDelegate.m */,
 				2831245F18C8D1590091E583 /* Images.xcassets */,
@@ -142,6 +156,25 @@
 				2831246F18C8D1590091E583 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2831247C18C8D1630091E583 /* MASViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2831247D18C8D1880091E583 /* MASViewController.h */,
+				2831247E18C8D1880091E583 /* MASViewController.m */,
+				2831247F18C8D1880091E583 /* MASViewController.xib */,
+			);
+			name = MASViewController;
+			sourceTree = "<group>";
+		};
+		2831248218C8D8560091E583 /* MASIndicatorButton */ = {
+			isa = PBXGroup;
+			children = (
+				2831248318C8D87E0091E583 /* MASIndicatorButton.h */,
+				2831248418C8D87E0091E583 /* MASIndicatorButton.m */,
+			);
+			name = MASIndicatorButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2831245818C8D1590091E583 /* InfoPlist.strings in Resources */,
+				2831248118C8D1880091E583 /* MASViewController.xib in Resources */,
 				2831246018C8D1590091E583 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2831248018C8D1880091E583 /* MASViewController.m in Sources */,
+				2831248518C8D87E0091E583 /* MASIndicatorButton.m in Sources */,
 				2831245E18C8D1590091E583 /* MASAppDelegate.m in Sources */,
 				2831245A18C8D1590091E583 /* main.m in Sources */,
 			);
