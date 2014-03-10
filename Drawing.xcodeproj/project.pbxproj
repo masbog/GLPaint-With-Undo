@@ -12,9 +12,11 @@
 		2804BFA218CE19D600E2005C /* PaintingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804BFA118CE19D600E2005C /* PaintingView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2804BFA618CE1A4B00E2005C /* point.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 2804BFA418CE1A4B00E2005C /* point.fsh */; };
 		2804BFA718CE1A4B00E2005C /* point.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 2804BFA518CE1A4B00E2005C /* point.vsh */; };
-		2804BFAA18CE1A7800E2005C /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2804BFA918CE1A7800E2005C /* Particle.png */; };
 		2804BFAB18CE200300E2005C /* point.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2804BFA418CE1A4B00E2005C /* point.fsh */; };
 		2804BFAC18CE200300E2005C /* point.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2804BFA518CE1A4B00E2005C /* point.vsh */; };
+		2804BFB418CE390200E2005C /* Kuas.png in Resources */ = {isa = PBXBuildFile; fileRef = 2804BFB318CE390200E2005C /* Kuas.png */; };
+		2804BFBA18CE3D0F00E2005C /* Pencil-Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2804BFB918CE3D0F00E2005C /* Pencil-Particle.png */; };
+		2804BFBE18CE3F4600E2005C /* Eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 2804BFBD18CE3F4600E2005C /* Eraser.png */; };
 		2831244E18C8D1590091E583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831244D18C8D1590091E583 /* Foundation.framework */; };
 		2831245018C8D1590091E583 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831244F18C8D1590091E583 /* CoreGraphics.framework */; };
 		2831245218C8D1590091E583 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831245118C8D1590091E583 /* UIKit.framework */; };
@@ -87,7 +89,9 @@
 		2804BFA118CE19D600E2005C /* PaintingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaintingView.m; sourceTree = "<group>"; };
 		2804BFA418CE1A4B00E2005C /* point.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = point.fsh; sourceTree = "<group>"; };
 		2804BFA518CE1A4B00E2005C /* point.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = point.vsh; sourceTree = "<group>"; };
-		2804BFA918CE1A7800E2005C /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
+		2804BFB318CE390200E2005C /* Kuas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kuas.png; sourceTree = "<group>"; };
+		2804BFB918CE3D0F00E2005C /* Pencil-Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pencil-Particle.png"; sourceTree = "<group>"; };
+		2804BFBD18CE3F4600E2005C /* Eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eraser.png; sourceTree = "<group>"; };
 		2831244A18C8D1590091E583 /* Drawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2831244D18C8D1590091E583 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2831244F18C8D1590091E583 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -213,7 +217,9 @@
 		2804BFA818CE1A5700E2005C /* Particle */ = {
 			isa = PBXGroup;
 			children = (
-				2804BFA918CE1A7800E2005C /* Particle.png */,
+				2804BFBD18CE3F4600E2005C /* Eraser.png */,
+				2804BFB318CE390200E2005C /* Kuas.png */,
+				2804BFB918CE3D0F00E2005C /* Pencil-Particle.png */,
 			);
 			name = Particle;
 			sourceTree = "<group>";
@@ -492,6 +498,7 @@
 				2804BFAC18CE200300E2005C /* point.vsh in Resources */,
 				28645F9C18CCE42500139D7C /* Sketches.tool.criterium.on.png in Resources */,
 				28645FA218CCE42500139D7C /* Sketches.tool.paint.fine.on.png in Resources */,
+				2804BFBE18CE3F4600E2005C /* Eraser.png in Resources */,
 				28645FA018CCE42500139D7C /* Sketches.tool.letraset.patterns.png in Resources */,
 				2831249618C8E9390091E583 /* MASLoginViewController.xib in Resources */,
 				283124A918CBB8C50091E583 /* ArrowIndicator.png in Resources */,
@@ -502,6 +509,7 @@
 				28645FAC18CCEAAA00139D7C /* ColorChip.png in Resources */,
 				2831245818C8D1590091E583 /* InfoPlist.strings in Resources */,
 				28645F9818CCE42500139D7C /* Sketches.tool.airbrush.on.png in Resources */,
+				2804BFBA18CE3D0F00E2005C /* Pencil-Particle.png in Resources */,
 				283124A218CB98480091E583 /* LoginSignupBtn@2x.png in Resources */,
 				283124A718CBAF4B0091E583 /* MASDrawingViewController.xib in Resources */,
 				283124AB18CBBA250091E583 /* ArrowIndicator-1.png in Resources */,
@@ -509,7 +517,6 @@
 				28645F9918CCE42500139D7C /* Sketches.tool.crayon01.Off.png in Resources */,
 				28645FA518CCE42500139D7C /* Sketches.tool.pen.ink02.off.png in Resources */,
 				28645F9A18CCE42500139D7C /* Sketches.tool.crayon01.on.png in Resources */,
-				2804BFAA18CE1A7800E2005C /* Particle.png in Resources */,
 				28645FA318CCE42500139D7C /* Sketches.tool.paint.large.off.png in Resources */,
 				28645FAA18CCE42500139D7C /* Sketches.tool.rotring.on.png in Resources */,
 				28645F9718CCE42500139D7C /* Sketches.tool.airbrush.off.png in Resources */,
@@ -517,6 +524,7 @@
 				28645F9F18CCE42500139D7C /* Sketches.tool.letraset.patterns.off.png in Resources */,
 				28645FA418CCE42500139D7C /* Sketches.tool.paint.large.on.png in Resources */,
 				28645FA718CCE42500139D7C /* Sketches.tool.pen.paint.off.png in Resources */,
+				2804BFB418CE390200E2005C /* Kuas.png in Resources */,
 				28645FA918CCE42500139D7C /* Sketches.tool.rotring.off.png in Resources */,
 				283124A018CB88AD0091E583 /* forest.png in Resources */,
 				2831246018C8D1590091E583 /* Images.xcassets in Resources */,

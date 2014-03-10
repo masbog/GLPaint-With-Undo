@@ -56,13 +56,6 @@
 #import "fileUtil.h"
 #import "debug.h"
 
-//CONSTANTS:
-
-#define kBrushOpacity		(1.0 / 3.0)
-#define kBrushPixelStep		3
-#define kBrushScale			2
-
-
 // Shaders
 enum {
     PROGRAM_POINT,
@@ -135,7 +128,7 @@ typedef struct {
 
 @implementation PaintingView
 
-@synthesize  location;
+@synthesize  location, brushScale, brushStep;
 @synthesize  previousLocation;
 
 // Implement this to override the default layer class (which is [CALayer class]).
@@ -243,7 +236,7 @@ typedef struct {
             glUniformMatrix4fv(program[PROGRAM_POINT].uniform[UNIFORM_MVP], 1, GL_FALSE, MVPMatrix.m);
         
             // point size
-            glUniform1f(program[PROGRAM_POINT].uniform[UNIFORM_POINT_SIZE], brushTexture.width / kBrushScale);
+            glUniform1f(program[PROGRAM_POINT].uniform[UNIFORM_POINT_SIZE], brushTexture.width / brushScale);
             
             // initialize brush color
             glUniform4fv(program[PROGRAM_POINT].uniform[UNIFORM_VERTEX_COLOR], 1, brushColor);
@@ -251,6 +244,27 @@ typedef struct {
 	}
     
     glError();
+}
+
+- (UIImage *)changeBlackColorTransparent: (UIImage *)image
+{
+    CGImageRef rawImageRef=image.CGImage;
+    
+    const float colorMasking[6] = {0, 1, 0, 1, 0, 1};
+    
+    UIGraphicsBeginImageContext(image.size);
+    CGImageRef maskedImageRef=CGImageCreateWithMaskingColors(rawImageRef, colorMasking);
+    {
+        //if in iphone
+        CGContextTranslateCTM(UIGraphicsGetCurrentContext(), 0.0, image.size.height);
+        CGContextScaleCTM(UIGraphicsGetCurrentContext(), 1.0, -1.0);
+    }
+    
+    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, image.size.width, image.size.height), maskedImageRef);
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    CGImageRelease(maskedImageRef);
+    UIGraphicsEndImageContext();
+    return result;
 }
 
 // Create a texture from an image
@@ -263,8 +277,14 @@ typedef struct {
     GLuint          texId;
     textureInfo_t   texture;
     
+    if ([name isEqualToString:@"Eraser.png"]) {
+        brushImage = [UIImage imageNamed:name].CGImage;
+    }else{
+        brushImage = [self changeBlackColorTransparent:[UIImage imageNamed:name]].CGImage;
+    }
+    
     // First create a UIImage object from the data in a image file, and then extract the Core Graphics image
-    brushImage = [UIImage imageNamed:name].CGImage;
+    //brushImage = [UIImage imageNamed:name].CGImage;
     
     // Get the width and height of the image
     width = CGImageGetWidth(brushImage);
@@ -334,7 +354,7 @@ typedef struct {
     glGenBuffers(1, &vboId);
     
     // Load the brush texture
-    brushTexture = [self textureFromName:@"Particle.png"];
+    [self setBgTextTure:0];
     
     // Load shaders
     [self setupShaders];
@@ -349,6 +369,30 @@ typedef struct {
         [self performSelector:@selector(playback:) withObject:recordedPaths afterDelay:0.2];
     
     return YES;
+}
+
+- (void)setBgTextTure:(int)type
+{
+    switch (type) {
+        case 0:
+            brushTexture = [self textureFromName:@"Eraser.png"];
+            break;
+        case 1:
+            brushTexture = [self textureFromName:@"Pencil-Particle.png"];
+            break;
+        case 2:
+            brushTexture = [self textureFromName:@"Particle.png"];
+            break;
+        case 3:
+            brushTexture = [self textureFromName:@"Particle.png"];
+            break;
+        case 4:
+            brushTexture = [self textureFromName:@"Kuas.png"];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (BOOL)resizeFromLayer:(CAEAGLLayer *)layer
@@ -460,7 +504,7 @@ typedef struct {
 		vertexBuffer = malloc(vertexMax * 2 * sizeof(GLfloat));
 	
 	// Add points to the buffer so there are drawing points every X pixels
-	count = MAX(ceilf(sqrtf((end.x - start.x) * (end.x - start.x) + (end.y - start.y) * (end.y - start.y)) / kBrushPixelStep), 1);
+	count = MAX(ceilf(sqrtf((end.x - start.x) * (end.x - start.x) + (end.y - start.y) * (end.y - start.y)) / brushStep), 1);
 	for(i = 0; i < count; ++i) {
 		if(vertexCount == vertexMax) {
 			vertexMax = 2 * vertexMax;
@@ -534,10 +578,9 @@ typedef struct {
 	    location.y = bounds.size.height - location.y;
 		previousLocation = [touch previousLocationInView:self];
 		previousLocation.y = bounds.size.height - previousLocation.y;
+        // Render the stroke
+        [self renderLineFromPoint:previousLocation toPoint:location];
 	}
-		
-	// Render the stroke
-	[self renderLineFromPoint:previousLocation toPoint:location];
 }
 
 // Handles the end of a touch event when the touch is a tap.
@@ -562,11 +605,17 @@ typedef struct {
 
 - (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
 {
+    [self setBrushColorWithRed:red green:green blue:blue alpha:1];
+}
+
+- (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
+{
+    [self setupShaders];
 	// Update the brush color
-    brushColor[0] = red * kBrushOpacity;
-    brushColor[1] = green * kBrushOpacity;
-    brushColor[2] = blue * kBrushOpacity;
-    brushColor[3] = kBrushOpacity;
+    brushColor[0] = red;
+    brushColor[1] = green;
+    brushColor[2] = blue;
+    brushColor[3] = alpha;
     
     if (initialized) {
         glUseProgram(program[PROGRAM_POINT].id);

@@ -59,7 +59,11 @@
 @property(nonatomic, readwrite) CGPoint location;
 @property(nonatomic, readwrite) CGPoint previousLocation;
 
+@property(nonatomic, readwrite) CGFloat brushStep;
+@property(nonatomic, readwrite) CGFloat brushScale;
+
 - (void)erase;
 - (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
-
+- (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
+- (void)setBgTextTure:(int)type;
 @end

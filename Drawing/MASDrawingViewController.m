@@ -112,7 +112,7 @@
                         @"Sketches.tool.paint.large.on.png",
                         @"Sketches.tool.pen.paint.on.png", nil];
     
-    currentDrawingType = 201;
+    currentDrawingType = 203;
     for (int i = 200; i<=204; i++) {
         UIButton *tempButton = (UIButton *)[self.view viewWithTag:i];
         [tempButton addTarget:self action:@selector(setDrawingType:) forControlEvents:UIControlEventTouchUpInside];
@@ -123,14 +123,11 @@
         }
     }
     
-    CGColorRef color = [UIColor colorWithHue:(CGFloat)2.0 / (CGFloat)kPaletteSize
-                                  saturation:kSaturation
-                                  brightness:kBrightness
-                                       alpha:1.0].CGColor;
-    const CGFloat *components = CGColorGetComponents(color);
-    
-    [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:components[0] green:components[1] blue:components[2]];
     [(PaintingView *)self.workspacePaintingView setBackgroundColor:[UIColor whiteColor]];
+    
+    [(PaintingView *)self.workspacePaintingView setBrushScale:3];
+    [(PaintingView *)self.workspacePaintingView setBrushStep:0.5];
+    [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0 green:0 blue:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -200,6 +197,8 @@
         CGFloat aAlpha = _components[3];
         opacity = aAlpha;
     }
+    
+    [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:red green:green blue:blue];
     
     selectedColor = color;
 }
@@ -417,6 +416,53 @@
     [tempButton setBackgroundImage:[UIImage imageNamed:[toolImageDisable objectAtIndex:currentDrawingType-200]] forState:UIControlStateNormal];
     currentDrawingType = button.tag;
     [button setBackgroundImage:[UIImage imageNamed:[toolImageEnable objectAtIndex:button.tag-200]] forState:UIControlStateNormal];
+    
+    switch (button.tag) {
+        case 200:
+        {
+            [(PaintingView *)self.workspacePaintingView setBgTextTure:0];
+            [(PaintingView *)self.workspacePaintingView setBrushScale:1];
+            [(PaintingView *)self.workspacePaintingView setBrushStep:1];
+            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:1 green:1 blue:1];
+        }
+            break;
+        case 201:
+        {
+            [(PaintingView *)self.workspacePaintingView setBgTextTure:1];
+            [(PaintingView *)self.workspacePaintingView setBrushScale:15];
+            [(PaintingView *)self.workspacePaintingView setBrushStep:5];
+            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0.2 green:0.2 blue:0.2 alpha:0.3];
+        }
+            break;
+        case 202:
+        {
+            [(PaintingView *)self.workspacePaintingView setBgTextTure:2];
+            [(PaintingView *)self.workspacePaintingView setBrushScale:20];
+            [(PaintingView *)self.workspacePaintingView setBrushStep:0.5];
+            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0 green:0 blue:0 ];
+        }
+            break;
+        case 203:
+        {
+            [(PaintingView *)self.workspacePaintingView setBgTextTure:3];
+            [(PaintingView *)self.workspacePaintingView setBrushScale:3];
+            [(PaintingView *)self.workspacePaintingView setBrushStep:0.5];
+            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0 green:0 blue:0 ];
+        }
+            break;
+        case 204:
+        {
+            [(PaintingView *)self.workspacePaintingView setBgTextTure:4];
+            [(PaintingView *)self.workspacePaintingView setBrushScale:1];
+            [(PaintingView *)self.workspacePaintingView setBrushStep:200];
+            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0.0001 green:0.0001 blue:0.0001 alpha:0.01];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 - (IBAction)changeSize:(id)sender
