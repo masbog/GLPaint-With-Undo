@@ -19,10 +19,43 @@
 		2831246918C8D1590091E583 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831245118C8D1590091E583 /* UIKit.framework */; };
 		2831247118C8D1590091E583 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2831246F18C8D1590091E583 /* InfoPlist.strings */; };
 		2831247318C8D1590091E583 /* DrawingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831247218C8D1590091E583 /* DrawingTests.m */; };
-		2831248018C8D1880091E583 /* MASViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831247E18C8D1880091E583 /* MASViewController.m */; };
-		2831248118C8D1880091E583 /* MASViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2831247F18C8D1880091E583 /* MASViewController.xib */; };
-		2831248518C8D87E0091E583 /* MASIndicatorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831248418C8D87E0091E583 /* MASIndicatorButton.m */; };
 		2831248718C8DD6C0091E583 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831248618C8DD6C0091E583 /* QuartzCore.framework */; };
+		2831249518C8E9390091E583 /* MASLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831249318C8E9390091E583 /* MASLoginViewController.m */; };
+		2831249618C8E9390091E583 /* MASLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2831249418C8E9390091E583 /* MASLoginViewController.xib */; };
+		2831249E18CB77850091E583 /* MASImageBlurr.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831249D18CB77850091E583 /* MASImageBlurr.m */; };
+		283124A018CB88AD0091E583 /* forest.png in Resources */ = {isa = PBXBuildFile; fileRef = 2831249F18CB88AD0091E583 /* forest.png */; };
+		283124A218CB98480091E583 /* LoginSignupBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 283124A118CB98480091E583 /* LoginSignupBtn@2x.png */; };
+		283124A618CBAF4B0091E583 /* MASDrawingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283124A418CBAF4B0091E583 /* MASDrawingViewController.m */; };
+		283124A718CBAF4B0091E583 /* MASDrawingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283124A518CBAF4B0091E583 /* MASDrawingViewController.xib */; };
+		283124A918CBB8C50091E583 /* ArrowIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 283124A818CBB8C50091E583 /* ArrowIndicator.png */; };
+		283124AB18CBBA250091E583 /* ArrowIndicator-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 283124AA18CBBA250091E583 /* ArrowIndicator-1.png */; };
+		283124C318CBD9680091E583 /* HRBrightnessCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 283124B718CBD9680091E583 /* HRBrightnessCursor.m */; };
+		283124C418CBD9680091E583 /* HRCgUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 283124B918CBD9680091E583 /* HRCgUtil.m */; };
+		283124C518CBD9680091E583 /* HRColorCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 283124BB18CBD9680091E583 /* HRColorCursor.m */; };
+		283124C618CBD9680091E583 /* HRColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 283124BE18CBD9680091E583 /* HRColorPickerView.m */; };
+		283124C718CBD9680091E583 /* HRColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283124C018CBD9680091E583 /* HRColorPickerViewController.m */; };
+		283124C818CBD9680091E583 /* HRColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 283124C218CBD9680091E583 /* HRColorUtil.m */; };
+		28645F9718CCE42500139D7C /* Sketches.tool.airbrush.off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8318CCE42500139D7C /* Sketches.tool.airbrush.off.png */; };
+		28645F9818CCE42500139D7C /* Sketches.tool.airbrush.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8418CCE42500139D7C /* Sketches.tool.airbrush.on.png */; };
+		28645F9918CCE42500139D7C /* Sketches.tool.crayon01.Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8518CCE42500139D7C /* Sketches.tool.crayon01.Off.png */; };
+		28645F9A18CCE42500139D7C /* Sketches.tool.crayon01.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8618CCE42500139D7C /* Sketches.tool.crayon01.on.png */; };
+		28645F9B18CCE42500139D7C /* Sketches.tool.criterium.off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8718CCE42500139D7C /* Sketches.tool.criterium.off.png */; };
+		28645F9C18CCE42500139D7C /* Sketches.tool.criterium.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8818CCE42500139D7C /* Sketches.tool.criterium.on.png */; };
+		28645F9D18CCE42500139D7C /* Sketches.tool.eraser.off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8918CCE42500139D7C /* Sketches.tool.eraser.off.png */; };
+		28645F9E18CCE42500139D7C /* Sketches.tool.eraser.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8A18CCE42500139D7C /* Sketches.tool.eraser.on.png */; };
+		28645F9F18CCE42500139D7C /* Sketches.tool.letraset.patterns.off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8B18CCE42500139D7C /* Sketches.tool.letraset.patterns.off.png */; };
+		28645FA018CCE42500139D7C /* Sketches.tool.letraset.patterns.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8C18CCE42500139D7C /* Sketches.tool.letraset.patterns.png */; };
+		28645FA118CCE42500139D7C /* Sketches.tool.paint.fine.off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8D18CCE42500139D7C /* Sketches.tool.paint.fine.off.png */; };
+		28645FA218CCE42500139D7C /* Sketches.tool.paint.fine.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8E18CCE42500139D7C /* Sketches.tool.paint.fine.on.png */; };
+		28645FA318CCE42500139D7C /* Sketches.tool.paint.large.off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F8F18CCE42500139D7C /* Sketches.tool.paint.large.off.png */; };
+		28645FA418CCE42500139D7C /* Sketches.tool.paint.large.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F9018CCE42500139D7C /* Sketches.tool.paint.large.on.png */; };
+		28645FA518CCE42500139D7C /* Sketches.tool.pen.ink02.off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F9118CCE42500139D7C /* Sketches.tool.pen.ink02.off.png */; };
+		28645FA618CCE42500139D7C /* Sketches.tool.pen.ink02.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F9218CCE42500139D7C /* Sketches.tool.pen.ink02.on.png */; };
+		28645FA718CCE42500139D7C /* Sketches.tool.pen.paint.off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F9318CCE42500139D7C /* Sketches.tool.pen.paint.off.png */; };
+		28645FA818CCE42500139D7C /* Sketches.tool.pen.paint.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F9418CCE42500139D7C /* Sketches.tool.pen.paint.on.png */; };
+		28645FA918CCE42500139D7C /* Sketches.tool.rotring.off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F9518CCE42500139D7C /* Sketches.tool.rotring.off.png */; };
+		28645FAA18CCE42500139D7C /* Sketches.tool.rotring.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F9618CCE42500139D7C /* Sketches.tool.rotring.on.png */; };
+		28645FAC18CCEAAA00139D7C /* ColorChip.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645FAB18CCEAAA00139D7C /* ColorChip.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,12 +85,53 @@
 		2831246E18C8D1590091E583 /* DrawingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DrawingTests-Info.plist"; sourceTree = "<group>"; };
 		2831247018C8D1590091E583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2831247218C8D1590091E583 /* DrawingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawingTests.m; sourceTree = "<group>"; };
-		2831247D18C8D1880091E583 /* MASViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewController.h; sourceTree = "<group>"; };
-		2831247E18C8D1880091E583 /* MASViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewController.m; sourceTree = "<group>"; };
-		2831247F18C8D1880091E583 /* MASViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASViewController.xib; sourceTree = "<group>"; };
-		2831248318C8D87E0091E583 /* MASIndicatorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASIndicatorButton.h; sourceTree = "<group>"; };
-		2831248418C8D87E0091E583 /* MASIndicatorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASIndicatorButton.m; sourceTree = "<group>"; };
 		2831248618C8DD6C0091E583 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2831249218C8E9390091E583 /* MASLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLoginViewController.h; sourceTree = "<group>"; };
+		2831249318C8E9390091E583 /* MASLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLoginViewController.m; sourceTree = "<group>"; };
+		2831249418C8E9390091E583 /* MASLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASLoginViewController.xib; sourceTree = "<group>"; };
+		2831249C18CB77850091E583 /* MASImageBlurr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASImageBlurr.h; sourceTree = "<group>"; };
+		2831249D18CB77850091E583 /* MASImageBlurr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASImageBlurr.m; sourceTree = "<group>"; };
+		2831249F18CB88AD0091E583 /* forest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forest.png; sourceTree = "<group>"; };
+		283124A118CB98480091E583 /* LoginSignupBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginSignupBtn@2x.png"; sourceTree = "<group>"; };
+		283124A318CBAF4B0091E583 /* MASDrawingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASDrawingViewController.h; sourceTree = "<group>"; };
+		283124A418CBAF4B0091E583 /* MASDrawingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASDrawingViewController.m; sourceTree = "<group>"; };
+		283124A518CBAF4B0091E583 /* MASDrawingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASDrawingViewController.xib; sourceTree = "<group>"; };
+		283124A818CBB8C50091E583 /* ArrowIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowIndicator.png; sourceTree = "<group>"; };
+		283124AA18CBBA250091E583 /* ArrowIndicator-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ArrowIndicator-1.png"; sourceTree = "<group>"; };
+		283124B618CBD9680091E583 /* HRBrightnessCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBrightnessCursor.h; sourceTree = "<group>"; };
+		283124B718CBD9680091E583 /* HRBrightnessCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBrightnessCursor.m; sourceTree = "<group>"; };
+		283124B818CBD9680091E583 /* HRCgUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCgUtil.h; sourceTree = "<group>"; };
+		283124B918CBD9680091E583 /* HRCgUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCgUtil.m; sourceTree = "<group>"; };
+		283124BA18CBD9680091E583 /* HRColorCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorCursor.h; sourceTree = "<group>"; };
+		283124BB18CBD9680091E583 /* HRColorCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorCursor.m; sourceTree = "<group>"; };
+		283124BC18CBD9680091E583 /* HRColorPickerMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorPickerMacros.h; sourceTree = "<group>"; };
+		283124BD18CBD9680091E583 /* HRColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorPickerView.h; sourceTree = "<group>"; };
+		283124BE18CBD9680091E583 /* HRColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorPickerView.m; sourceTree = "<group>"; };
+		283124BF18CBD9680091E583 /* HRColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorPickerViewController.h; sourceTree = "<group>"; };
+		283124C018CBD9680091E583 /* HRColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorPickerViewController.m; sourceTree = "<group>"; };
+		283124C118CBD9680091E583 /* HRColorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorUtil.h; sourceTree = "<group>"; };
+		283124C218CBD9680091E583 /* HRColorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorUtil.m; sourceTree = "<group>"; };
+		28645F8318CCE42500139D7C /* Sketches.tool.airbrush.off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.airbrush.off.png; sourceTree = "<group>"; };
+		28645F8418CCE42500139D7C /* Sketches.tool.airbrush.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.airbrush.on.png; sourceTree = "<group>"; };
+		28645F8518CCE42500139D7C /* Sketches.tool.crayon01.Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.crayon01.Off.png; sourceTree = "<group>"; };
+		28645F8618CCE42500139D7C /* Sketches.tool.crayon01.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.crayon01.on.png; sourceTree = "<group>"; };
+		28645F8718CCE42500139D7C /* Sketches.tool.criterium.off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.criterium.off.png; sourceTree = "<group>"; };
+		28645F8818CCE42500139D7C /* Sketches.tool.criterium.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.criterium.on.png; sourceTree = "<group>"; };
+		28645F8918CCE42500139D7C /* Sketches.tool.eraser.off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.eraser.off.png; sourceTree = "<group>"; };
+		28645F8A18CCE42500139D7C /* Sketches.tool.eraser.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.eraser.on.png; sourceTree = "<group>"; };
+		28645F8B18CCE42500139D7C /* Sketches.tool.letraset.patterns.off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.letraset.patterns.off.png; sourceTree = "<group>"; };
+		28645F8C18CCE42500139D7C /* Sketches.tool.letraset.patterns.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.letraset.patterns.png; sourceTree = "<group>"; };
+		28645F8D18CCE42500139D7C /* Sketches.tool.paint.fine.off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.paint.fine.off.png; sourceTree = "<group>"; };
+		28645F8E18CCE42500139D7C /* Sketches.tool.paint.fine.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.paint.fine.on.png; sourceTree = "<group>"; };
+		28645F8F18CCE42500139D7C /* Sketches.tool.paint.large.off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.paint.large.off.png; sourceTree = "<group>"; };
+		28645F9018CCE42500139D7C /* Sketches.tool.paint.large.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.paint.large.on.png; sourceTree = "<group>"; };
+		28645F9118CCE42500139D7C /* Sketches.tool.pen.ink02.off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.pen.ink02.off.png; sourceTree = "<group>"; };
+		28645F9218CCE42500139D7C /* Sketches.tool.pen.ink02.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.pen.ink02.on.png; sourceTree = "<group>"; };
+		28645F9318CCE42500139D7C /* Sketches.tool.pen.paint.off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.pen.paint.off.png; sourceTree = "<group>"; };
+		28645F9418CCE42500139D7C /* Sketches.tool.pen.paint.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.pen.paint.on.png; sourceTree = "<group>"; };
+		28645F9518CCE42500139D7C /* Sketches.tool.rotring.off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.rotring.off.png; sourceTree = "<group>"; };
+		28645F9618CCE42500139D7C /* Sketches.tool.rotring.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.rotring.on.png; sourceTree = "<group>"; };
+		28645FAB18CCEAAA00139D7C /* ColorChip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorChip.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +193,9 @@
 		2831245318C8D1590091E583 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				2831248218C8D8560091E583 /* MASIndicatorButton */,
-				2831247C18C8D1630091E583 /* MASViewController */,
+				2831249718C8EA8F0091E583 /* Images */,
+				2831248E18C8E8F20091E583 /* MyViewController */,
+				2831248918C8E8D10091E583 /* 3rdPartyLib */,
 				2831245C18C8D1590091E583 /* MASAppDelegate.h */,
 				2831245D18C8D1590091E583 /* MASAppDelegate.m */,
 				2831245F18C8D1590091E583 /* Images.xcassets */,
@@ -161,20 +236,108 @@
 		2831247C18C8D1630091E583 /* MASViewController */ = {
 			isa = PBXGroup;
 			children = (
-				2831247D18C8D1880091E583 /* MASViewController.h */,
-				2831247E18C8D1880091E583 /* MASViewController.m */,
-				2831247F18C8D1880091E583 /* MASViewController.xib */,
+				283124A318CBAF4B0091E583 /* MASDrawingViewController.h */,
+				283124A418CBAF4B0091E583 /* MASDrawingViewController.m */,
+				283124A518CBAF4B0091E583 /* MASDrawingViewController.xib */,
 			);
 			name = MASViewController;
 			sourceTree = "<group>";
 		};
-		2831248218C8D8560091E583 /* MASIndicatorButton */ = {
+		2831248218C8D8560091E583 /* MAS */ = {
 			isa = PBXGroup;
 			children = (
-				2831248318C8D87E0091E583 /* MASIndicatorButton.h */,
-				2831248418C8D87E0091E583 /* MASIndicatorButton.m */,
+				2831249C18CB77850091E583 /* MASImageBlurr.h */,
+				2831249D18CB77850091E583 /* MASImageBlurr.m */,
 			);
-			name = MASIndicatorButton;
+			name = MAS;
+			sourceTree = "<group>";
+		};
+		2831248818C8E8790091E583 /* MASAuthViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2831249218C8E9390091E583 /* MASLoginViewController.h */,
+				2831249318C8E9390091E583 /* MASLoginViewController.m */,
+				2831249418C8E9390091E583 /* MASLoginViewController.xib */,
+			);
+			name = MASAuthViewController;
+			sourceTree = "<group>";
+		};
+		2831248918C8E8D10091E583 /* 3rdPartyLib */ = {
+			isa = PBXGroup;
+			children = (
+				283124B518CBD95B0091E583 /* ColorPicker */,
+			);
+			name = 3rdPartyLib;
+			sourceTree = "<group>";
+		};
+		2831248E18C8E8F20091E583 /* MyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2831248818C8E8790091E583 /* MASAuthViewController */,
+				2831248218C8D8560091E583 /* MAS */,
+				2831247C18C8D1630091E583 /* MASViewController */,
+			);
+			name = MyViewController;
+			sourceTree = "<group>";
+		};
+		2831249718C8EA8F0091E583 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				283124AC18CBC5470091E583 /* ImageControls */,
+				283124A118CB98480091E583 /* LoginSignupBtn@2x.png */,
+				2831249F18CB88AD0091E583 /* forest.png */,
+				283124A818CBB8C50091E583 /* ArrowIndicator.png */,
+				283124AA18CBBA250091E583 /* ArrowIndicator-1.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		283124AC18CBC5470091E583 /* ImageControls */ = {
+			isa = PBXGroup;
+			children = (
+				28645FAB18CCEAAA00139D7C /* ColorChip.png */,
+				28645F8318CCE42500139D7C /* Sketches.tool.airbrush.off.png */,
+				28645F8418CCE42500139D7C /* Sketches.tool.airbrush.on.png */,
+				28645F8518CCE42500139D7C /* Sketches.tool.crayon01.Off.png */,
+				28645F8618CCE42500139D7C /* Sketches.tool.crayon01.on.png */,
+				28645F8718CCE42500139D7C /* Sketches.tool.criterium.off.png */,
+				28645F8818CCE42500139D7C /* Sketches.tool.criterium.on.png */,
+				28645F8918CCE42500139D7C /* Sketches.tool.eraser.off.png */,
+				28645F8A18CCE42500139D7C /* Sketches.tool.eraser.on.png */,
+				28645F8B18CCE42500139D7C /* Sketches.tool.letraset.patterns.off.png */,
+				28645F8C18CCE42500139D7C /* Sketches.tool.letraset.patterns.png */,
+				28645F8D18CCE42500139D7C /* Sketches.tool.paint.fine.off.png */,
+				28645F8E18CCE42500139D7C /* Sketches.tool.paint.fine.on.png */,
+				28645F8F18CCE42500139D7C /* Sketches.tool.paint.large.off.png */,
+				28645F9018CCE42500139D7C /* Sketches.tool.paint.large.on.png */,
+				28645F9118CCE42500139D7C /* Sketches.tool.pen.ink02.off.png */,
+				28645F9218CCE42500139D7C /* Sketches.tool.pen.ink02.on.png */,
+				28645F9318CCE42500139D7C /* Sketches.tool.pen.paint.off.png */,
+				28645F9418CCE42500139D7C /* Sketches.tool.pen.paint.on.png */,
+				28645F9518CCE42500139D7C /* Sketches.tool.rotring.off.png */,
+				28645F9618CCE42500139D7C /* Sketches.tool.rotring.on.png */,
+			);
+			name = ImageControls;
+			sourceTree = "<group>";
+		};
+		283124B518CBD95B0091E583 /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				283124B618CBD9680091E583 /* HRBrightnessCursor.h */,
+				283124B718CBD9680091E583 /* HRBrightnessCursor.m */,
+				283124B818CBD9680091E583 /* HRCgUtil.h */,
+				283124B918CBD9680091E583 /* HRCgUtil.m */,
+				283124BA18CBD9680091E583 /* HRColorCursor.h */,
+				283124BB18CBD9680091E583 /* HRColorCursor.m */,
+				283124BC18CBD9680091E583 /* HRColorPickerMacros.h */,
+				283124BD18CBD9680091E583 /* HRColorPickerView.h */,
+				283124BE18CBD9680091E583 /* HRColorPickerView.m */,
+				283124BF18CBD9680091E583 /* HRColorPickerViewController.h */,
+				283124C018CBD9680091E583 /* HRColorPickerViewController.m */,
+				283124C118CBD9680091E583 /* HRColorUtil.h */,
+				283124C218CBD9680091E583 /* HRColorUtil.m */,
+			);
+			name = ColorPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,8 +416,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28645F9C18CCE42500139D7C /* Sketches.tool.criterium.on.png in Resources */,
+				28645FA218CCE42500139D7C /* Sketches.tool.paint.fine.on.png in Resources */,
+				28645FA018CCE42500139D7C /* Sketches.tool.letraset.patterns.png in Resources */,
+				2831249618C8E9390091E583 /* MASLoginViewController.xib in Resources */,
+				283124A918CBB8C50091E583 /* ArrowIndicator.png in Resources */,
+				28645FA818CCE42500139D7C /* Sketches.tool.pen.paint.on.png in Resources */,
+				28645F9E18CCE42500139D7C /* Sketches.tool.eraser.on.png in Resources */,
+				28645FA118CCE42500139D7C /* Sketches.tool.paint.fine.off.png in Resources */,
+				28645F9B18CCE42500139D7C /* Sketches.tool.criterium.off.png in Resources */,
+				28645FAC18CCEAAA00139D7C /* ColorChip.png in Resources */,
 				2831245818C8D1590091E583 /* InfoPlist.strings in Resources */,
-				2831248118C8D1880091E583 /* MASViewController.xib in Resources */,
+				28645F9818CCE42500139D7C /* Sketches.tool.airbrush.on.png in Resources */,
+				283124A218CB98480091E583 /* LoginSignupBtn@2x.png in Resources */,
+				283124A718CBAF4B0091E583 /* MASDrawingViewController.xib in Resources */,
+				283124AB18CBBA250091E583 /* ArrowIndicator-1.png in Resources */,
+				28645FA618CCE42500139D7C /* Sketches.tool.pen.ink02.on.png in Resources */,
+				28645F9918CCE42500139D7C /* Sketches.tool.crayon01.Off.png in Resources */,
+				28645FA518CCE42500139D7C /* Sketches.tool.pen.ink02.off.png in Resources */,
+				28645F9A18CCE42500139D7C /* Sketches.tool.crayon01.on.png in Resources */,
+				28645FA318CCE42500139D7C /* Sketches.tool.paint.large.off.png in Resources */,
+				28645FAA18CCE42500139D7C /* Sketches.tool.rotring.on.png in Resources */,
+				28645F9718CCE42500139D7C /* Sketches.tool.airbrush.off.png in Resources */,
+				28645F9D18CCE42500139D7C /* Sketches.tool.eraser.off.png in Resources */,
+				28645F9F18CCE42500139D7C /* Sketches.tool.letraset.patterns.off.png in Resources */,
+				28645FA418CCE42500139D7C /* Sketches.tool.paint.large.on.png in Resources */,
+				28645FA718CCE42500139D7C /* Sketches.tool.pen.paint.off.png in Resources */,
+				28645FA918CCE42500139D7C /* Sketches.tool.rotring.off.png in Resources */,
+				283124A018CB88AD0091E583 /* forest.png in Resources */,
 				2831246018C8D1590091E583 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,10 +463,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2831248018C8D1880091E583 /* MASViewController.m in Sources */,
-				2831248518C8D87E0091E583 /* MASIndicatorButton.m in Sources */,
+				283124A618CBAF4B0091E583 /* MASDrawingViewController.m in Sources */,
+				283124C518CBD9680091E583 /* HRColorCursor.m in Sources */,
+				283124C418CBD9680091E583 /* HRCgUtil.m in Sources */,
+				2831249518C8E9390091E583 /* MASLoginViewController.m in Sources */,
+				283124C318CBD9680091E583 /* HRBrightnessCursor.m in Sources */,
 				2831245E18C8D1590091E583 /* MASAppDelegate.m in Sources */,
+				283124C718CBD9680091E583 /* HRColorPickerViewController.m in Sources */,
 				2831245A18C8D1590091E583 /* main.m in Sources */,
+				283124C818CBD9680091E583 /* HRColorUtil.m in Sources */,
+				283124C618CBD9680091E583 /* HRColorPickerView.m in Sources */,
+				2831249E18CB77850091E583 /* MASImageBlurr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +597,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Drawing/Drawing-Prefix.pch";
 				INFOPLIST_FILE = "Drawing/Drawing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -414,6 +611,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Drawing/Drawing-Prefix.pch";
 				INFOPLIST_FILE = "Drawing/Drawing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -480,6 +678,7 @@
 				2831247818C8D1590091E583 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2831247918C8D1590091E583 /* Build configuration list for PBXNativeTarget "DrawingTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +687,7 @@
 				2831247B18C8D1590091E583 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

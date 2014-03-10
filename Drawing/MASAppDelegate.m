@@ -7,7 +7,6 @@
 //
 
 #import "MASAppDelegate.h"
-#import "MASViewController.h"
 
 @implementation MASAppDelegate
 
@@ -17,8 +16,11 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    MASViewController *mVC = [[MASViewController alloc] initWithNibName:@"MASViewController" bundle:nil];
-    self.window.rootViewController = mVC;
+    self.mVC = [[MASDrawingViewController alloc] initWithNibName:@"MASDrawingViewController" bundle:nil];
+    self.mLVC = [[MASLoginViewController alloc] initWithNibName:@"MASLoginViewController" bundle:nil];
+    self.navCon = [[UINavigationController alloc] initWithRootViewController:self.mVC];
+    
+    self.window.rootViewController = self.mLVC;
     
     [self.window makeKeyAndVisible];
     return YES;
