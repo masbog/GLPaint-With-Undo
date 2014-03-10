@@ -14,6 +14,7 @@
                 <outlet property="sizeSlider" destination="bKf-fH-Rv1" id="1ED-sC-pG2"/>
                 <outlet property="tempDrawImage" destination="uBP-IK-z2N" id="HZz-sE-CuH"/>
                 <outlet property="view" destination="2GM-qD-DeW" id="DUK-hX-8Ec"/>
+                <outlet property="workspacePaintingView" destination="aWk-Pj-Vq9" id="KcB-PI-Tlu"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -32,6 +33,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aWk-Pj-Vq9" customClass="PaintingView">
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Cc-rP-myD">
                     <rect key="frame" x="12" y="608" width="1000" height="160"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -285,6 +291,7 @@
                 </button>
             </subviews>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
         </view>
     </objects>

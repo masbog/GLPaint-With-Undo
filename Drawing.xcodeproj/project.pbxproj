@@ -13,6 +13,8 @@
 		2804BFA618CE1A4B00E2005C /* point.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 2804BFA418CE1A4B00E2005C /* point.fsh */; };
 		2804BFA718CE1A4B00E2005C /* point.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 2804BFA518CE1A4B00E2005C /* point.vsh */; };
 		2804BFAA18CE1A7800E2005C /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2804BFA918CE1A7800E2005C /* Particle.png */; };
+		2804BFAB18CE200300E2005C /* point.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2804BFA418CE1A4B00E2005C /* point.fsh */; };
+		2804BFAC18CE200300E2005C /* point.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2804BFA518CE1A4B00E2005C /* point.vsh */; };
 		2831244E18C8D1590091E583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831244D18C8D1590091E583 /* Foundation.framework */; };
 		2831245018C8D1590091E583 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831244F18C8D1590091E583 /* CoreGraphics.framework */; };
 		2831245218C8D1590091E583 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831245118C8D1590091E583 /* UIKit.framework */; };
@@ -486,6 +488,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2804BFAB18CE200300E2005C /* point.fsh in Resources */,
+				2804BFAC18CE200300E2005C /* point.vsh in Resources */,
 				28645F9C18CCE42500139D7C /* Sketches.tool.criterium.on.png in Resources */,
 				28645FA218CCE42500139D7C /* Sketches.tool.paint.fine.on.png in Resources */,
 				28645FA018CCE42500139D7C /* Sketches.tool.letraset.patterns.png in Resources */,

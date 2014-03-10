@@ -10,6 +10,15 @@
 #import "HRColorPickerViewController.h"
 #import "PaintingView.h"
 
+//CONSTANTS:
+
+#define kBrightness             1.0
+#define kSaturation             0.45
+
+#define kPaletteHeight			30
+#define kPaletteSize			5
+#define kMinEraseInterval		0.5
+
 @interface MASDrawingViewController ()<HRColorPickerViewControllerDelegate>
 {
     HRColorPickerViewController *colorPicker;
@@ -37,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;
 @property (weak, nonatomic) IBOutlet UISlider *sizeSlider;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *currentSizeIndicator;
+@property (weak, nonatomic) IBOutlet PaintingView *workspacePaintingView;
 
 @end
 
@@ -112,6 +122,15 @@
             [tempButton setBackgroundImage:[UIImage imageNamed:[toolImageDisable objectAtIndex:i-200]] forState:UIControlStateNormal];
         }
     }
+    
+    CGColorRef color = [UIColor colorWithHue:(CGFloat)2.0 / (CGFloat)kPaletteSize
+                                  saturation:kSaturation
+                                  brightness:kBrightness
+                                       alpha:1.0].CGColor;
+    const CGFloat *components = CGColorGetComponents(color);
+    
+    [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:components[0] green:components[1] blue:components[2]];
+    [(PaintingView *)self.workspacePaintingView setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)viewDidAppear:(BOOL)animated
