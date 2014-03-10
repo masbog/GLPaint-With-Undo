@@ -8,6 +8,7 @@
 
 #import "MASDrawingViewController.h"
 #import "HRColorPickerViewController.h"
+#import "PaintingView.h"
 
 @interface MASDrawingViewController ()<HRColorPickerViewControllerDelegate>
 {
@@ -27,6 +28,8 @@
     
     NSArray *toolImageDisable;
     NSArray *toolImageEnable;
+    
+    CFTimeInterval		lastTime;
 }
 @property (weak, nonatomic) IBOutlet UIView *panelDrawingView;
 @property (weak, nonatomic) IBOutlet UIButton *indicatorButton;

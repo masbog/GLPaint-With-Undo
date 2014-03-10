@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2804BF9D18CE197100E2005C /* fileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804BF9A18CE197100E2005C /* fileUtil.m */; };
+		2804BF9E18CE197100E2005C /* shaderUtil.c in Sources */ = {isa = PBXBuildFile; fileRef = 2804BF9B18CE197100E2005C /* shaderUtil.c */; };
+		2804BFA218CE19D600E2005C /* PaintingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804BFA118CE19D600E2005C /* PaintingView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2804BFA618CE1A4B00E2005C /* point.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 2804BFA418CE1A4B00E2005C /* point.fsh */; };
+		2804BFA718CE1A4B00E2005C /* point.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 2804BFA518CE1A4B00E2005C /* point.vsh */; };
+		2804BFAA18CE1A7800E2005C /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2804BFA918CE1A7800E2005C /* Particle.png */; };
 		2831244E18C8D1590091E583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831244D18C8D1590091E583 /* Foundation.framework */; };
 		2831245018C8D1590091E583 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831244F18C8D1590091E583 /* CoreGraphics.framework */; };
 		2831245218C8D1590091E583 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831245118C8D1590091E583 /* UIKit.framework */; };
@@ -56,6 +62,7 @@
 		28645FA918CCE42500139D7C /* Sketches.tool.rotring.off.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F9518CCE42500139D7C /* Sketches.tool.rotring.off.png */; };
 		28645FAA18CCE42500139D7C /* Sketches.tool.rotring.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F9618CCE42500139D7C /* Sketches.tool.rotring.on.png */; };
 		28645FAC18CCEAAA00139D7C /* ColorChip.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645FAB18CCEAAA00139D7C /* ColorChip.png */; };
+		28645FAF18CE18B600139D7C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28645FAE18CE18B600139D7C /* OpenGLES.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +76,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2804BF9818CE197100E2005C /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
+		2804BF9918CE197100E2005C /* fileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileUtil.h; sourceTree = "<group>"; };
+		2804BF9A18CE197100E2005C /* fileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fileUtil.m; sourceTree = "<group>"; };
+		2804BF9B18CE197100E2005C /* shaderUtil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shaderUtil.c; sourceTree = "<group>"; };
+		2804BF9C18CE197100E2005C /* shaderUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shaderUtil.h; sourceTree = "<group>"; };
+		2804BFA018CE19D600E2005C /* PaintingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaintingView.h; sourceTree = "<group>"; };
+		2804BFA118CE19D600E2005C /* PaintingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaintingView.m; sourceTree = "<group>"; };
+		2804BFA418CE1A4B00E2005C /* point.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = point.fsh; sourceTree = "<group>"; };
+		2804BFA518CE1A4B00E2005C /* point.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = point.vsh; sourceTree = "<group>"; };
+		2804BFA918CE1A7800E2005C /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
 		2831244A18C8D1590091E583 /* Drawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2831244D18C8D1590091E583 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2831244F18C8D1590091E583 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,6 +149,7 @@
 		28645F9518CCE42500139D7C /* Sketches.tool.rotring.off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.rotring.off.png; sourceTree = "<group>"; };
 		28645F9618CCE42500139D7C /* Sketches.tool.rotring.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.rotring.on.png; sourceTree = "<group>"; };
 		28645FAB18CCEAAA00139D7C /* ColorChip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorChip.png; sourceTree = "<group>"; };
+		28645FAE18CE18B600139D7C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28645FAF18CE18B600139D7C /* OpenGLES.framework in Frameworks */,
 				2831248718C8DD6C0091E583 /* QuartzCore.framework in Frameworks */,
 				2831245018C8D1590091E583 /* CoreGraphics.framework in Frameworks */,
 				2831245218C8D1590091E583 /* UIKit.framework in Frameworks */,
@@ -159,6 +178,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2804BF9718CE196000E2005C /* ShaderUtils */ = {
+			isa = PBXGroup;
+			children = (
+				2804BF9818CE197100E2005C /* debug.h */,
+				2804BF9918CE197100E2005C /* fileUtil.h */,
+				2804BF9A18CE197100E2005C /* fileUtil.m */,
+				2804BF9B18CE197100E2005C /* shaderUtil.c */,
+				2804BF9C18CE197100E2005C /* shaderUtil.h */,
+			);
+			name = ShaderUtils;
+			sourceTree = "<group>";
+		};
+		2804BF9F18CE19CC00E2005C /* PaintingView */ = {
+			isa = PBXGroup;
+			children = (
+				2804BFA018CE19D600E2005C /* PaintingView.h */,
+				2804BFA118CE19D600E2005C /* PaintingView.m */,
+			);
+			name = PaintingView;
+			sourceTree = "<group>";
+		};
+		2804BFA318CE1A3B00E2005C /* Shader */ = {
+			isa = PBXGroup;
+			children = (
+				2804BFA418CE1A4B00E2005C /* point.fsh */,
+				2804BFA518CE1A4B00E2005C /* point.vsh */,
+			);
+			name = Shader;
+			sourceTree = "<group>";
+		};
+		2804BFA818CE1A5700E2005C /* Particle */ = {
+			isa = PBXGroup;
+			children = (
+				2804BFA918CE1A7800E2005C /* Particle.png */,
+			);
+			name = Particle;
+			sourceTree = "<group>";
+		};
 		2831244118C8D1590091E583 = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +238,7 @@
 		2831244C18C8D1590091E583 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28645FAE18CE18B600139D7C /* OpenGLES.framework */,
 				2831248618C8DD6C0091E583 /* QuartzCore.framework */,
 				2831244D18C8D1590091E583 /* Foundation.framework */,
 				2831244F18C8D1590091E583 /* CoreGraphics.framework */,
@@ -193,6 +251,7 @@
 		2831245318C8D1590091E583 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				28645FAD18CE189D00139D7C /* CoreUtilityOpenGL */,
 				2831249718C8EA8F0091E583 /* Images */,
 				2831248E18C8E8F20091E583 /* MyViewController */,
 				2831248918C8E8D10091E583 /* 3rdPartyLib */,
@@ -340,6 +399,17 @@
 			name = ColorPicker;
 			sourceTree = "<group>";
 		};
+		28645FAD18CE189D00139D7C /* CoreUtilityOpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				2804BFA818CE1A5700E2005C /* Particle */,
+				2804BFA318CE1A3B00E2005C /* Shader */,
+				2804BF9F18CE19CC00E2005C /* PaintingView */,
+				2804BF9718CE196000E2005C /* ShaderUtils */,
+			);
+			name = CoreUtilityOpenGL;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -435,6 +505,7 @@
 				28645F9918CCE42500139D7C /* Sketches.tool.crayon01.Off.png in Resources */,
 				28645FA518CCE42500139D7C /* Sketches.tool.pen.ink02.off.png in Resources */,
 				28645F9A18CCE42500139D7C /* Sketches.tool.crayon01.on.png in Resources */,
+				2804BFAA18CE1A7800E2005C /* Particle.png in Resources */,
 				28645FA318CCE42500139D7C /* Sketches.tool.paint.large.off.png in Resources */,
 				28645FAA18CCE42500139D7C /* Sketches.tool.rotring.on.png in Resources */,
 				28645F9718CCE42500139D7C /* Sketches.tool.airbrush.off.png in Resources */,
@@ -463,9 +534,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2804BF9E18CE197100E2005C /* shaderUtil.c in Sources */,
 				283124A618CBAF4B0091E583 /* MASDrawingViewController.m in Sources */,
+				2804BFA718CE1A4B00E2005C /* point.vsh in Sources */,
 				283124C518CBD9680091E583 /* HRColorCursor.m in Sources */,
 				283124C418CBD9680091E583 /* HRCgUtil.m in Sources */,
+				2804BF9D18CE197100E2005C /* fileUtil.m in Sources */,
+				2804BFA618CE1A4B00E2005C /* point.fsh in Sources */,
 				2831249518C8E9390091E583 /* MASLoginViewController.m in Sources */,
 				283124C318CBD9680091E583 /* HRBrightnessCursor.m in Sources */,
 				2831245E18C8D1590091E583 /* MASAppDelegate.m in Sources */,
@@ -473,6 +548,7 @@
 				2831245A18C8D1590091E583 /* main.m in Sources */,
 				283124C818CBD9680091E583 /* HRColorUtil.m in Sources */,
 				283124C618CBD9680091E583 /* HRColorPickerView.m in Sources */,
+				2804BFA218CE19D600E2005C /* PaintingView.m in Sources */,
 				2831249E18CB77850091E583 /* MASImageBlurr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
