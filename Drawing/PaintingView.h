@@ -63,7 +63,9 @@
 @property(nonatomic, readwrite) CGFloat brushScale;
 
 - (void)erase;
+- (void)undo;
 - (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
 - (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 - (void)setBgTextTure:(int)type;
+
 @end

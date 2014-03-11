@@ -9,10 +9,8 @@
             <connections>
                 <outlet property="currentSizeIndicator" destination="Lrn-ZU-8Oi" id="oxA-9V-hBW"/>
                 <outlet property="indicatorButton" destination="4UZ-qL-giU" id="iGS-Qx-jpG"/>
-                <outlet property="mainImage" destination="76o-pQ-R6h" id="Kwp-Se-D2M"/>
                 <outlet property="panelDrawingView" destination="5Cc-rP-myD" id="iq1-e5-XYR"/>
                 <outlet property="sizeSlider" destination="bKf-fH-Rv1" id="1ED-sC-pG2"/>
-                <outlet property="tempDrawImage" destination="uBP-IK-z2N" id="HZz-sE-CuH"/>
                 <outlet property="view" destination="2GM-qD-DeW" id="DUK-hX-8Ec"/>
                 <outlet property="workspacePaintingView" destination="aWk-Pj-Vq9" id="KcB-PI-Tlu"/>
             </connections>
@@ -25,14 +23,6 @@
                 <userLayoutGuide location="513" affinity="minX"/>
             </userGuides>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="76o-pQ-R6h">
-                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBP-IK-z2N">
-                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aWk-Pj-Vq9" customClass="PaintingView">
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -203,7 +193,7 @@
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="cUR-Dl-ojS"/>
                                 <barButtonItem title="1" style="plain" id="Lrn-ZU-8Oi"/>
                                 <barButtonItem style="plain" id="usW-lr-km9">
-                                    <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="100" id="bKf-fH-Rv1">
+                                    <slider key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="100" id="bKf-fH-Rv1">
                                         <rect key="frame" x="727" y="7" width="234" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
@@ -219,6 +209,9 @@
                             <rect key="frame" x="870" y="44" width="50" height="116"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="UNDO"/>
+                            <connections>
+                                <action selector="undo:" destination="-1" eventType="touchUpInside" id="qfn-xl-KwL"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="oJC-Y9-d7g">
                             <rect key="frame" x="798" y="44" width="50" height="116"/>

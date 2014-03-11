@@ -25,13 +25,10 @@
     UIPopoverController *colorPickerPopover;
     UIColor *selectedColor;
     
-    CGPoint lastPoint;
     CGFloat red;
     CGFloat green;
     CGFloat blue;
-    CGFloat brush;
     CGFloat opacity;
-    BOOL mouseSwiped;
     
     int currentDrawingType;
     
@@ -42,8 +39,6 @@
 }
 @property (weak, nonatomic) IBOutlet UIView *panelDrawingView;
 @property (weak, nonatomic) IBOutlet UIButton *indicatorButton;
-@property (weak, nonatomic) IBOutlet UIImageView *tempDrawImage;
-@property (weak, nonatomic) IBOutlet UIImageView *mainImage;
 @property (weak, nonatomic) IBOutlet UISlider *sizeSlider;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *currentSizeIndicator;
 @property (weak, nonatomic) IBOutlet PaintingView *workspacePaintingView;
@@ -78,7 +73,6 @@
     red = 0.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/255.0;
-    brush = 1.0;
     opacity = 0.8f;
     
     self.sizeSlider.value = 1.0;
@@ -127,7 +121,7 @@
     
     [(PaintingView *)self.workspacePaintingView setBrushScale:3];
     [(PaintingView *)self.workspacePaintingView setBrushStep:0.5];
-    [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0 green:0 blue:0];
+    [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:red green:green blue:blue];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -196,135 +190,23 @@
         blue = aBlue;
         CGFloat aAlpha = _components[3];
         opacity = aAlpha;
+    }else{
+        red = 0;
+        green = 0;
+        blue = 0;
+        opacity = 1;
     }
     
-    [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:red green:green blue:blue];
+    if (currentDrawingType == 200) {
+        [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:1 green:1 blue:1 alpha:1];
+    }else if (currentDrawingType == 201){
+        [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0.2 green:0.2 blue:0.2 alpha:0.8];
+    }else{
+        [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:red green:green blue:blue alpha:opacity];
+    }
     
     selectedColor = color;
 }
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    mouseSwiped = NO;
-    UITouch *touch = [touches anyObject];
-    lastPoint = [touch locationInView:self.view];
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    mouseSwiped = YES;
-    
-    UITouch *touch = [touches anyObject];
-    CGPoint currentPoint = [touch locationInView:self.view];
-    
-    switch (currentDrawingType) {
-        case eraserDrawing:
-        {
-            
-            UIGraphicsBeginImageContext(self.view.frame.size);
-            [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-            CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
-            CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
-            CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-            CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush );
-            CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1, 1, 1, 1);
-            
-            //CGContextSetShadow(UIGraphicsGetCurrentContext(), CGSizeMake(0, 5), 10);
-            CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
-            
-            CGContextStrokePath(UIGraphicsGetCurrentContext());
-            self.tempDrawImage.image = UIGraphicsGetImageFromCurrentImageContext();
-            [self.tempDrawImage setAlpha:opacity];
-            UIGraphicsEndImageContext();
-        }
-            break;
-        case pencilDrawing:
-        case penDrawing:
-        {
-            UIGraphicsBeginImageContext(self.view.frame.size);
-            [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-            CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
-            CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
-            CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-            CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush );
-            CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, opacity);
-            
-            //CGContextSetShadow(UIGraphicsGetCurrentContext(), CGSizeMake(0, 5), 10);
-            CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
-            
-            CGContextStrokePath(UIGraphicsGetCurrentContext());
-            self.tempDrawImage.image = UIGraphicsGetImageFromCurrentImageContext();
-            [self.tempDrawImage setAlpha:opacity];
-            UIGraphicsEndImageContext();
-        }
-        case brushDrawing:
-        {
-            
-            
-        }
-            break;
-        default:
-            break;
-    }
-    
-    lastPoint = currentPoint;
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    if(!mouseSwiped) {
-        switch (currentDrawingType) {
-            case eraserDrawing:
-            {
-                UIGraphicsBeginImageContext(self.view.frame.size);
-                [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-                CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-                CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush);
-                CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1, 1, 1, 1);
-                CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
-                CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
-                CGContextStrokePath(UIGraphicsGetCurrentContext());
-                CGContextFlush(UIGraphicsGetCurrentContext());
-                self.tempDrawImage.image = UIGraphicsGetImageFromCurrentImageContext();
-                UIGraphicsEndImageContext();
-            }
-                break;
-            case pencilDrawing:
-            case penDrawing:
-            {
-                UIGraphicsBeginImageContext(self.view.frame.size);
-                [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-                CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-                CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush);
-                CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, opacity);
-                
-                CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
-                CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
-                CGContextStrokePath(UIGraphicsGetCurrentContext());
-                CGContextFlush(UIGraphicsGetCurrentContext());
-                self.tempDrawImage.image = UIGraphicsGetImageFromCurrentImageContext();
-                UIGraphicsEndImageContext();
-            }
-                break;
-            case brushDrawing:
-            {
-                
-            }
-                break;
-                
-            default:
-                break;
-        }
-    }
-    
-    UIGraphicsBeginImageContext(self.mainImage.frame.size);
-    [self.mainImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
-    [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:opacity];
-    self.mainImage.image = UIGraphicsGetImageFromCurrentImageContext();
-    self.tempDrawImage.image = nil;
-    UIGraphicsEndImageContext();
-}
-
 
 - (IBAction)changeColor:(id)sender
 {
@@ -423,23 +305,23 @@
             [(PaintingView *)self.workspacePaintingView setBgTextTure:0];
             [(PaintingView *)self.workspacePaintingView setBrushScale:1];
             [(PaintingView *)self.workspacePaintingView setBrushStep:1];
-            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:1 green:1 blue:1];
+            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:1 green:1 blue:1 alpha:1];
         }
             break;
         case 201:
         {
             [(PaintingView *)self.workspacePaintingView setBgTextTure:1];
             [(PaintingView *)self.workspacePaintingView setBrushScale:15];
-            [(PaintingView *)self.workspacePaintingView setBrushStep:5];
-            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0.2 green:0.2 blue:0.2 alpha:0.3];
+            [(PaintingView *)self.workspacePaintingView setBrushStep:2];
+            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:red*0.2 green:green*0.2 blue:blue*0.2 alpha:0.8];
         }
             break;
         case 202:
         {
             [(PaintingView *)self.workspacePaintingView setBgTextTure:2];
             [(PaintingView *)self.workspacePaintingView setBrushScale:20];
-            [(PaintingView *)self.workspacePaintingView setBrushStep:0.5];
-            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0 green:0 blue:0 ];
+            [(PaintingView *)self.workspacePaintingView setBrushStep:0.1];
+            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:red green:green blue:blue alpha:1];
         }
             break;
         case 203:
@@ -447,15 +329,15 @@
             [(PaintingView *)self.workspacePaintingView setBgTextTure:3];
             [(PaintingView *)self.workspacePaintingView setBrushScale:3];
             [(PaintingView *)self.workspacePaintingView setBrushStep:0.5];
-            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0 green:0 blue:0 ];
+            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:red green:green blue:blue alpha:1];
         }
             break;
         case 204:
         {
             [(PaintingView *)self.workspacePaintingView setBgTextTure:4];
             [(PaintingView *)self.workspacePaintingView setBrushScale:1];
-            [(PaintingView *)self.workspacePaintingView setBrushStep:200];
-            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:0.0001 green:0.0001 blue:0.0001 alpha:0.01];
+            [(PaintingView *)self.workspacePaintingView setBrushStep:10];
+            [(PaintingView *)self.workspacePaintingView setBrushColorWithRed:red green:green blue:blue alpha:opacity];
         }
             break;
             
@@ -469,11 +351,15 @@
 {
     UISlider *slider = (UISlider *)sender;
     self.currentSizeIndicator.title = [NSString stringWithFormat:@"%d", (int)slider.value];
-    brush = slider.value;
 }
 
 - (IBAction)clearAll:(id)sender
 {
-    self.mainImage.image = nil;
+    [(PaintingView *)self.workspacePaintingView erase];
+}
+
+- (IBAction)undo:(id)sender
+{
+    [(PaintingView *)self.workspacePaintingView undo];
 }
 @end

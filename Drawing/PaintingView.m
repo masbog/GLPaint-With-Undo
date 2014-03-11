@@ -123,13 +123,14 @@ typedef struct {
     
     BOOL initialized;
 }
-
+@property (nonatomic, retain) NSMutableArray *vertexBuffers;
+@property (nonatomic, retain) NSMutableArray *paternUndo;
 @end
 
 @implementation PaintingView
 
 @synthesize  location, brushScale, brushStep;
-@synthesize  previousLocation;
+@synthesize  previousLocation, vertexBuffers, paternUndo;
 
 // Implement this to override the default layer class (which is [CALayer class]).
 // We do this so that our view will be backed by a layer that is capable of OpenGL ES rendering.
@@ -277,11 +278,7 @@ typedef struct {
     GLuint          texId;
     textureInfo_t   texture;
     
-    if ([name isEqualToString:@"Eraser.png"]) {
-        brushImage = [UIImage imageNamed:name].CGImage;
-    }else{
-        brushImage = [self changeBlackColorTransparent:[UIImage imageNamed:name]].CGImage;
-    }
+    brushImage = [UIImage imageNamed:name].CGImage;
     
     // First create a UIImage object from the data in a image file, and then extract the Core Graphics image
     //brushImage = [UIImage imageNamed:name].CGImage;
@@ -381,10 +378,10 @@ typedef struct {
             brushTexture = [self textureFromName:@"Pencil-Particle.png"];
             break;
         case 2:
-            brushTexture = [self textureFromName:@"Particle.png"];
+            brushTexture = [self textureFromName:@"Eraser.png"];
             break;
         case 3:
-            brushTexture = [self textureFromName:@"Particle.png"];
+            brushTexture = [self textureFromName:@"Eraser.png"];
             break;
         case 4:
             brushTexture = [self textureFromName:@"Kuas.png"];
@@ -475,6 +472,9 @@ typedef struct {
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	
+    [paternUndo removeAllObjects];
+    paternUndo = nil;
+    
 	// Display the buffer
 	glBindRenderbuffer(GL_RENDERBUFFER, viewRenderbuffer);
 	[context presentRenderbuffer:GL_RENDERBUFFER];
@@ -527,6 +527,10 @@ typedef struct {
     glUseProgram(program[PROGRAM_POINT].id);
 	glDrawArrays(GL_POINTS, 0, vertexCount);
 	
+    // Store VBO for undo
+    NSData *data = [NSData dataWithBytes:vertexBuffer length:vertexCount * sizeof(GL_FLOAT) * 2] ;
+    [self.vertexBuffers addObject:data];
+    
 	// Display the buffer
 	glBindRenderbuffer(GL_RENDERBUFFER, viewRenderbuffer);
 	[context presentRenderbuffer:GL_RENDERBUFFER];
@@ -560,6 +564,13 @@ typedef struct {
 	// Convert touch point from UIView referential to OpenGL one (upside-down flip)
 	location = [touch locationInView:self];
 	location.y = bounds.size.height - location.y;
+    
+    if (self.vertexBuffers == nil)
+    {
+        self.vertexBuffers = [[NSMutableArray alloc] init];
+    }else{
+        [self.vertexBuffers removeAllObjects];
+    }
 }
 
 // Handles the continuation of a touch.
@@ -594,6 +605,10 @@ typedef struct {
 		previousLocation.y = bounds.size.height - previousLocation.y;
 		[self renderLineFromPoint:previousLocation toPoint:location];
 	}
+    if (self.paternUndo == nil) {
+        self.paternUndo = [[NSMutableArray alloc] init];
+    }
+    [self.paternUndo addObject:self.vertexBuffers];
 }
 
 // Handles the end of a touch event.
@@ -620,6 +635,29 @@ typedef struct {
     if (initialized) {
         glUseProgram(program[PROGRAM_POINT].id);
         glUniform4fv(program[PROGRAM_POINT].uniform[UNIFORM_VERTEX_COLOR], 1, brushColor);
+    }
+}
+
+- (void)undo
+{
+    if (self.paternUndo.count > 0) {
+        glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
+        glClearColor(0.0, 0.0, 0.0, 0.0);
+        glClear(GL_COLOR_BUFFER_BIT);
+        
+        [self.paternUndo removeLastObject];
+        
+        for (NSMutableArray *temArray in self.paternUndo) {
+            for (NSData *point in temArray)
+            {
+                NSUInteger count = point.length / (sizeof(GL_FLOAT) * 2);
+                glVertexPointer(2, GL_FLOAT, 0, point.bytes);
+                glDrawArrays(GL_POINTS, 0, count);
+            }
+        }
+        
+        glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+        [context presentRenderbuffer:GL_RENDERBUFFER_OES];
     }
 }
 
