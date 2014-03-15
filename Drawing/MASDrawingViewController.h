@@ -23,5 +23,5 @@ typedef enum{
 - (IBAction)changeSize:(id)sender;
 - (IBAction)clearAll:(id)sender;
 - (IBAction)undo:(id)sender;
-
+- (IBAction)saveDrawingView:(id)sender;
 @end

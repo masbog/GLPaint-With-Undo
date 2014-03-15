@@ -124,13 +124,13 @@ typedef struct {
     BOOL initialized;
 }
 @property (nonatomic, retain) NSMutableArray *vertexBuffers;
-@property (nonatomic, retain) NSMutableArray *paternUndo;
+@property (nonatomic, retain) NSMutableArray *pointTracker;
 @end
 
 @implementation PaintingView
 
 @synthesize  location, brushScale, brushStep;
-@synthesize  previousLocation, vertexBuffers, paternUndo;
+@synthesize  previousLocation, vertexBuffers;
 
 // Implement this to override the default layer class (which is [CALayer class]).
 // We do this so that our view will be backed by a layer that is capable of OpenGL ES rendering.
@@ -471,9 +471,6 @@ typedef struct {
 	glBindFramebuffer(GL_FRAMEBUFFER, viewFramebuffer);
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
-	
-    [paternUndo removeAllObjects];
-    paternUndo = nil;
     
 	// Display the buffer
 	glBindRenderbuffer(GL_RENDERBUFFER, viewRenderbuffer);
@@ -526,10 +523,6 @@ typedef struct {
 	// Draw
     glUseProgram(program[PROGRAM_POINT].id);
 	glDrawArrays(GL_POINTS, 0, vertexCount);
-	
-    // Store VBO for undo
-    NSData *data = [NSData dataWithBytes:vertexBuffer length:vertexCount * sizeof(GL_FLOAT) * 2] ;
-    [self.vertexBuffers addObject:data];
     
 	// Display the buffer
 	glBindRenderbuffer(GL_RENDERBUFFER, viewRenderbuffer);
@@ -564,13 +557,9 @@ typedef struct {
 	// Convert touch point from UIView referential to OpenGL one (upside-down flip)
 	location = [touch locationInView:self];
 	location.y = bounds.size.height - location.y;
-    
-    if (self.vertexBuffers == nil)
-    {
-        self.vertexBuffers = [[NSMutableArray alloc] init];
-    }else{
-        [self.vertexBuffers removeAllObjects];
-    }
+    self.pointTracker = nil;
+    self.pointTracker = [[NSMutableArray alloc] init];
+    [self.pointTracker addObject:[NSValue valueWithCGPoint:location]];
 }
 
 // Handles the continuation of a touch.
@@ -589,6 +578,8 @@ typedef struct {
 	    location.y = bounds.size.height - location.y;
 		previousLocation = [touch previousLocationInView:self];
 		previousLocation.y = bounds.size.height - previousLocation.y;
+        
+        [self.pointTracker addObject:[NSValue valueWithCGPoint:location]];
         // Render the stroke
         [self renderLineFromPoint:previousLocation toPoint:location];
 	}
@@ -605,10 +596,13 @@ typedef struct {
 		previousLocation.y = bounds.size.height - previousLocation.y;
 		[self renderLineFromPoint:previousLocation toPoint:location];
 	}
-    if (self.paternUndo == nil) {
-        self.paternUndo = [[NSMutableArray alloc] init];
+    
+    [self.pointTracker addObject:[NSValue valueWithCGPoint:location]];
+    if (self.vertexBuffers == nil) {
+        self.vertexBuffers = [[NSMutableArray alloc] init];
     }
-    [self.paternUndo addObject:self.vertexBuffers];
+    
+    [self.vertexBuffers addObject:self.pointTracker];
 }
 
 // Handles the end of a touch event.
@@ -640,25 +634,88 @@ typedef struct {
 
 - (void)undo
 {
-    if (self.paternUndo.count > 0) {
-        glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
-        glClearColor(0.0, 0.0, 0.0, 0.0);
-        glClear(GL_COLOR_BUFFER_BIT);
-        
-        [self.paternUndo removeLastObject];
-        
-        for (NSMutableArray *temArray in self.paternUndo) {
-            for (NSData *point in temArray)
-            {
-                NSUInteger count = point.length / (sizeof(GL_FLOAT) * 2);
-                glVertexPointer(2, GL_FLOAT, 0, point.bytes);
-                glDrawArrays(GL_POINTS, 0, count);
-            }
+    [self.vertexBuffers removeLastObject];
+    
+    glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    for (NSMutableArray *array in self.vertexBuffers) {
+        for (int i=0; i<array.count-1; i++) {
+            NSValue *valFromPoint = [array objectAtIndex:i];
+            NSValue *valToPoint = [array objectAtIndex:i+1];
+            CGPoint pointFrom = valFromPoint.CGPointValue;
+            CGPoint pointTo = valToPoint.CGPointValue;
+            [self renderLineFromPoint:pointFrom toPoint:pointTo];
         }
-        
-        glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
-        [context presentRenderbuffer:GL_RENDERBUFFER_OES];
     }
+    
+    glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+    [context presentRenderbuffer:GL_RENDERBUFFER_OES];
+}
+
+- (UIImage *) glToUIImage
+{
+    CGSize frame = self.frame.size;
+    int imageWidth = (int)frame.width;
+    int imageHeight = (int)frame.height;
+    
+    NSInteger myDataLength = imageWidth * imageHeight * 4;
+    
+    
+    // allocate array and read pixels into it.
+    GLubyte *buffer = (GLubyte *) malloc(myDataLength);
+    glReadPixels(0, 0, imageWidth, imageHeight, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    
+    // gl renders "upside down" so swap top to bottom into new array.
+    // there's gotta be a better way, but this works.
+    
+    GLubyte *buffer2 = (GLubyte *) malloc(myDataLength);
+    
+    GLubyte R, G, B, A;
+    
+    for(int y = 0; y < imageHeight; y++){
+        for(int x = 0; x < imageWidth*4; x+=4){
+            R = buffer[y * 4 * imageWidth + x];
+            G = buffer[y * 4 * imageWidth + x +1];
+            B = buffer[y * 4 * imageWidth + x +2];
+            A = buffer[y * 4 * imageWidth + x +3];
+            
+            buffer2[((imageHeight - 1) - y) * imageWidth * 4 + x]    = 255-(A-R);
+            buffer2[((imageHeight - 1) - y) * imageWidth * 4 + x +1] = 255-(A-G);
+            buffer2[((imageHeight - 1) - y) * imageWidth * 4 + x +2] = 255-(A-B);
+            
+            buffer2[((imageHeight - 1) - y) * imageWidth * 4 + x +3] = 255;
+        }
+    }
+    
+    // make data provider with data.
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, NULL);
+    //CGDataProviderRef provider2 = CGDataProviderCreateWithData(NULL, white, myDataLength, NULL);
+    
+    // prep the ingredients
+    int bitsPerComponent = 8;
+    int bitsPerPixel = 32;
+    int bytesPerRow = 4 * imageWidth;
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    
+    // make the cgimage
+    CGImageRef imageRef = CGImageCreate(imageWidth, imageHeight, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    
+    UIImage *myImage = [UIImage imageWithCGImage:imageRef];
+    
+    CGImageRelease(imageRef);
+    CGColorSpaceRelease(colorSpaceRef);
+    
+    
+    CGDataProviderRelease(provider);
+    
+    free(buffer);
+    free(buffer2);
+    
+    return myImage;
 }
 
 @end

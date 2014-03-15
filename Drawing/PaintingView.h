@@ -67,5 +67,6 @@
 - (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
 - (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 - (void)setBgTextTure:(int)type;
+- (UIImage *) glToUIImage;
 
 @end

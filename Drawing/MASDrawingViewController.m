@@ -9,6 +9,7 @@
 #import "MASDrawingViewController.h"
 #import "HRColorPickerViewController.h"
 #import "PaintingView.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 //CONSTANTS:
 
@@ -360,6 +361,28 @@
 
 - (IBAction)undo:(id)sender
 {
+    if(CFAbsoluteTimeGetCurrent() > lastTime + kMinEraseInterval) {
+		lastTime = CFAbsoluteTimeGetCurrent();
+	}
     [(PaintingView *)self.workspacePaintingView undo];
+}
+
+- (IBAction)saveDrawingView:(id)sender
+{
+    ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
+    if (status != ALAuthorizationStatusAuthorized) {
+        //show alert for asking the user to give permission
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Not Saved, please allow this application to access your photo library." message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }else{
+        UIImage *img = [(PaintingView *)self.workspacePaintingView glToUIImage];
+        UIGraphicsEndImageContext();
+        NSParameterAssert(img);
+        UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Saved" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
 }
 @end

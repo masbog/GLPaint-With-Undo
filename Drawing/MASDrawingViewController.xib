@@ -191,7 +191,9 @@
                                     </button>
                                 </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="cUR-Dl-ojS"/>
-                                <barButtonItem title="1" style="plain" id="Lrn-ZU-8Oi"/>
+                                <barButtonItem title="1" style="plain" id="Lrn-ZU-8Oi">
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </barButtonItem>
                                 <barButtonItem style="plain" id="usW-lr-km9">
                                     <slider key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="100" id="bKf-fH-Rv1">
                                         <rect key="frame" x="727" y="7" width="234" height="30"/>
@@ -205,26 +207,29 @@
                             </items>
                             <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </toolbar>
-                        <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hah-s2-Juj">
-                            <rect key="frame" x="870" y="44" width="50" height="116"/>
+                        <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hah-s2-Juj">
+                            <rect key="frame" x="767" y="69" width="64" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="UNDO"/>
+                            <state key="normal" image="undo.png"/>
                             <connections>
                                 <action selector="undo:" destination="-1" eventType="touchUpInside" id="qfn-xl-KwL"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="oJC-Y9-d7g">
-                            <rect key="frame" x="798" y="44" width="50" height="116"/>
+                        <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="oJC-Y9-d7g">
+                            <rect key="frame" x="839" y="70" width="64" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="CLEAR"/>
+                            <state key="normal" image="clear.png"/>
                             <connections>
                                 <action selector="clearAll:" destination="-1" eventType="touchUpInside" id="Ee7-Qu-Ajg"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IHb-df-eAu">
-                            <rect key="frame" x="928" y="44" width="50" height="116"/>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IHb-df-eAu">
+                            <rect key="frame" x="911" y="70" width="64" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="SAVE"/>
+                            <state key="normal" image="roll.png"/>
+                            <connections>
+                                <action selector="saveDrawingView:" destination="-1" eventType="touchUpInside" id="D7P-WP-eoC"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="200" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzL-HC-jwb">
                             <rect key="frame" x="20" y="52" width="46" height="100"/>
@@ -302,5 +307,8 @@
         <image name="Sketches.tool.pen.ink02.on.png" width="90" height="200"/>
         <image name="Sketches.tool.rotring.off.png" width="90" height="200"/>
         <image name="Sketches.tool.rotring.on.png" width="90" height="200"/>
+        <image name="clear.png" width="64" height="64"/>
+        <image name="roll.png" width="128" height="128"/>
+        <image name="undo.png" width="64" height="64"/>
     </resources>
 </document>

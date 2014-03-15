@@ -67,6 +67,9 @@
 		28645FAA18CCE42500139D7C /* Sketches.tool.rotring.on.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645F9618CCE42500139D7C /* Sketches.tool.rotring.on.png */; };
 		28645FAC18CCEAAA00139D7C /* ColorChip.png in Resources */ = {isa = PBXBuildFile; fileRef = 28645FAB18CCEAAA00139D7C /* ColorChip.png */; };
 		28645FAF18CE18B600139D7C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28645FAE18CE18B600139D7C /* OpenGLES.framework */; };
+		28ACD76818D4AD15003421A1 /* roll.png in Resources */ = {isa = PBXBuildFile; fileRef = 28ACD76718D4AD15003421A1 /* roll.png */; };
+		28ACD76A18D4ADD7003421A1 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 28ACD76918D4ADD7003421A1 /* clear.png */; };
+		28ACD76C18D4AF79003421A1 /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 28ACD76B18D4AF79003421A1 /* undo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +159,9 @@
 		28645F9618CCE42500139D7C /* Sketches.tool.rotring.on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sketches.tool.rotring.on.png; sourceTree = "<group>"; };
 		28645FAB18CCEAAA00139D7C /* ColorChip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorChip.png; sourceTree = "<group>"; };
 		28645FAE18CE18B600139D7C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		28ACD76718D4AD15003421A1 /* roll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roll.png; sourceTree = "<group>"; };
+		28ACD76918D4ADD7003421A1 /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
+		28ACD76B18D4AF79003421A1 /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +368,9 @@
 		283124AC18CBC5470091E583 /* ImageControls */ = {
 			isa = PBXGroup;
 			children = (
+				28ACD76B18D4AF79003421A1 /* undo.png */,
+				28ACD76918D4ADD7003421A1 /* clear.png */,
+				28ACD76718D4AD15003421A1 /* roll.png */,
 				28645FAB18CCEAAA00139D7C /* ColorChip.png */,
 				28645F8318CCE42500139D7C /* Sketches.tool.airbrush.off.png */,
 				28645F8418CCE42500139D7C /* Sketches.tool.airbrush.on.png */,
@@ -520,12 +529,15 @@
 				28645FA318CCE42500139D7C /* Sketches.tool.paint.large.off.png in Resources */,
 				28645FAA18CCE42500139D7C /* Sketches.tool.rotring.on.png in Resources */,
 				28645F9718CCE42500139D7C /* Sketches.tool.airbrush.off.png in Resources */,
+				28ACD76818D4AD15003421A1 /* roll.png in Resources */,
+				28ACD76A18D4ADD7003421A1 /* clear.png in Resources */,
 				28645F9D18CCE42500139D7C /* Sketches.tool.eraser.off.png in Resources */,
 				28645F9F18CCE42500139D7C /* Sketches.tool.letraset.patterns.off.png in Resources */,
 				28645FA418CCE42500139D7C /* Sketches.tool.paint.large.on.png in Resources */,
 				28645FA718CCE42500139D7C /* Sketches.tool.pen.paint.off.png in Resources */,
 				2804BFB418CE390200E2005C /* Kuas.png in Resources */,
 				28645FA918CCE42500139D7C /* Sketches.tool.rotring.off.png in Resources */,
+				28ACD76C18D4AF79003421A1 /* undo.png in Resources */,
 				283124A018CB88AD0091E583 /* forest.png in Resources */,
 				2831246018C8D1590091E583 /* Images.xcassets in Resources */,
 			);
