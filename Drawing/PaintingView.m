@@ -124,6 +124,7 @@ typedef struct {
     BOOL initialized;
 }
 @property (nonatomic, retain) NSMutableArray *vertexBuffers;
+@property (nonatomic, retain) NSMutableArray *vertexBuffersPools;
 @property (nonatomic, retain) NSMutableArray *pointTracker;
 @end
 
@@ -465,6 +466,7 @@ typedef struct {
 // Erases the screen
 - (void)erase
 {
+    [self.vertexBuffers removeAllObjects];
 	[EAGLContext setCurrentContext:context];
 	
 	// Clear the buffer
@@ -527,6 +529,11 @@ typedef struct {
 	// Display the buffer
 	glBindRenderbuffer(GL_RENDERBUFFER, viewRenderbuffer);
 	[context presentRenderbuffer:GL_RENDERBUFFER];
+    
+    // Store VBO for undo
+    NSData *data = [NSData dataWithBytes:vertexBuffer length:vertexCount * sizeof(GLfloat) * 2] ;
+    if (self.vertexBuffers == nil) self.vertexBuffers = [[NSMutableArray alloc] init];
+    [self.vertexBuffers addObject:data];
 }
 
 // Reads previously recorded points and draws them onscreen. This is the Shake Me message that appears when the application launches.
@@ -550,8 +557,8 @@ typedef struct {
 
 // Handles the start of a touch
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{   
-	CGRect				bounds = [self bounds];
+{
+    CGRect				bounds = [self bounds];
     UITouch*	touch = [[event touchesForView:self] anyObject];
 	firstTouch = YES;
 	// Convert touch point from UIView referential to OpenGL one (upside-down flip)
@@ -598,11 +605,10 @@ typedef struct {
 	}
     
     [self.pointTracker addObject:[NSValue valueWithCGPoint:location]];
-    if (self.vertexBuffers == nil) {
-        self.vertexBuffers = [[NSMutableArray alloc] init];
-    }
     
-    [self.vertexBuffers addObject:self.pointTracker];
+    if (self.vertexBuffersPools == nil) self.vertexBuffersPools = [[NSMutableArray alloc] init];
+    [self.vertexBuffersPools addObject:[NSArray arrayWithArray:self.vertexBuffers]];
+    [self.vertexBuffers removeAllObjects];
 }
 
 // Handles the end of a touch event.
@@ -634,24 +640,34 @@ typedef struct {
 
 - (void)undo
 {
-    [self.vertexBuffers removeLastObject];
+    [EAGLContext setCurrentContext:context];
     
-    glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
-    glClearColor(0.0, 0.0, 0.0, 0.0);
-    glClear(GL_COLOR_BUFFER_BIT);
+	// Clear the buffer
+	glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClear(GL_COLOR_BUFFER_BIT);
     
-    for (NSMutableArray *array in self.vertexBuffers) {
-        for (int i=0; i<array.count-1; i++) {
-            NSValue *valFromPoint = [array objectAtIndex:i];
-            NSValue *valToPoint = [array objectAtIndex:i+1];
-            CGPoint pointFrom = valFromPoint.CGPointValue;
-            CGPoint pointTo = valToPoint.CGPointValue;
-            [self renderLineFromPoint:pointFrom toPoint:pointTo];
+    // Render remaining vbos
+    [self.vertexBuffersPools removeLastObject];
+    for (NSArray *array in self.vertexBuffersPools) {
+        for (NSData *vbo in array)
+        {
+            // Load data to the Vertex Buffer Object
+            glBindBuffer(GL_ARRAY_BUFFER, vboId);
+            glBufferData(GL_ARRAY_BUFFER, vbo.length, vbo.bytes, GL_DYNAMIC_DRAW);
+            
+            glEnableVertexAttribArray(ATTRIB_VERTEX);
+            glVertexAttribPointer(ATTRIB_VERTEX, 2, GL_FLOAT, GL_FALSE, 0, 0);
+            
+            // Draw
+            glUseProgram(program[PROGRAM_POINT].id);
+            glDrawArrays(GL_POINTS, 0, [vbo length] / sizeof(CGPoint));
         }
     }
     
-    glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
-    [context presentRenderbuffer:GL_RENDERBUFFER_OES];
+	// Display the buffer
+	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+	[context presentRenderbuffer:GL_RENDERBUFFER_OES];
 }
 
 - (UIImage *) glToUIImage
