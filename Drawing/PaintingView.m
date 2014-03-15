@@ -466,7 +466,7 @@ typedef struct {
 // Erases the screen
 - (void)erase
 {
-    [self.vertexBuffers removeAllObjects];
+    [self.vertexBuffersPools removeAllObjects];
 	[EAGLContext setCurrentContext:context];
 	
 	// Clear the buffer
