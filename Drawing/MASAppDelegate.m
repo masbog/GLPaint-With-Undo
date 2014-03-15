@@ -16,14 +16,44 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
+    self.splashView = [[UIView alloc] initWithFrame:self.window.bounds];
+    UIImageView *imgV = [[UIImageView alloc] initWithFrame:self.window.bounds];
+    imgV.image = [UIImage imageNamed:@"me"];
+    [self.splashView addSubview:imgV];
+    
     self.mVC = [[MASDrawingViewController alloc] initWithNibName:@"MASDrawingViewController" bundle:nil];
     self.mLVC = [[MASLoginViewController alloc] initWithNibName:@"MASLoginViewController" bundle:nil];
     self.navCon = [[UINavigationController alloc] initWithRootViewController:self.mVC];
     
     self.window.rootViewController = self.mLVC;
-    
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)removeSplash
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight
+                           forView:self.window
+                             cache:YES];
+    
+    [self.splashView removeFromSuperview];
+    [UIView commitAnimations];
+    self.window.rootViewController = self.navCon;
+}
+
+- (void)switchViewController
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft
+                           forView:self.window
+                             cache:YES];
+    
+    [self.window addSubview:self.splashView];
+    [UIView commitAnimations];
+    [self performSelector:@selector(removeSplash) withObject:nil afterDelay:2];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

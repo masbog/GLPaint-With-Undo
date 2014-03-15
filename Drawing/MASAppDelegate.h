@@ -16,4 +16,8 @@
 @property (strong, nonatomic) UINavigationController *navCon;
 @property (strong, nonatomic) MASDrawingViewController *mVC;
 @property (strong, nonatomic) MASLoginViewController *mLVC;
+@property (strong, nonatomic) UIView *splashView;
+
+- (void)switchViewController;
+
 @end

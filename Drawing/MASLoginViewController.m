@@ -71,8 +71,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
 - (IBAction)hideMe:(id)sender
 {
     for (UITextField *txtField in self.loginContainerView.subviews) {
@@ -83,7 +81,7 @@
 - (IBAction)doLogin:(id)sender
 {
     MASAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    delegate.window.rootViewController = delegate.navCon;
+    [delegate switchViewController];
 }
 
 - (IBAction)doSignUp:(id)sender

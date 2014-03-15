@@ -70,6 +70,7 @@
 		28ACD76818D4AD15003421A1 /* roll.png in Resources */ = {isa = PBXBuildFile; fileRef = 28ACD76718D4AD15003421A1 /* roll.png */; };
 		28ACD76A18D4ADD7003421A1 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 28ACD76918D4ADD7003421A1 /* clear.png */; };
 		28ACD76C18D4AF79003421A1 /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 28ACD76B18D4AF79003421A1 /* undo.png */; };
+		28ACD7A918D4EAE8003421A1 /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = 28ACD7A818D4EAE8003421A1 /* me.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,7 @@
 		28ACD76718D4AD15003421A1 /* roll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roll.png; sourceTree = "<group>"; };
 		28ACD76918D4ADD7003421A1 /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
 		28ACD76B18D4AF79003421A1 /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undo.png; sourceTree = "<group>"; };
+		28ACD7A818D4EAE8003421A1 /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +370,7 @@
 		283124AC18CBC5470091E583 /* ImageControls */ = {
 			isa = PBXGroup;
 			children = (
+				28ACD7A818D4EAE8003421A1 /* me.png */,
 				28ACD76B18D4AF79003421A1 /* undo.png */,
 				28ACD76918D4ADD7003421A1 /* clear.png */,
 				28ACD76718D4AD15003421A1 /* roll.png */,
@@ -514,6 +517,7 @@
 				28645FA818CCE42500139D7C /* Sketches.tool.pen.paint.on.png in Resources */,
 				28645F9E18CCE42500139D7C /* Sketches.tool.eraser.on.png in Resources */,
 				28645FA118CCE42500139D7C /* Sketches.tool.paint.fine.off.png in Resources */,
+				28ACD7A918D4EAE8003421A1 /* me.png in Resources */,
 				28645F9B18CCE42500139D7C /* Sketches.tool.criterium.off.png in Resources */,
 				28645FAC18CCEAAA00139D7C /* ColorChip.png in Resources */,
 				2831245818C8D1590091E583 /* InfoPlist.strings in Resources */,
