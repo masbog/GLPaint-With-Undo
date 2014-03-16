@@ -122,6 +122,7 @@ typedef struct {
     GLuint vboId;
     
     BOOL initialized;
+    int choosedBrustTexturteType;
 }
 @property (nonatomic, retain) NSMutableArray *vertexBuffers;
 @property (nonatomic, retain) NSMutableArray *vertexBuffersPools;
@@ -391,6 +392,8 @@ typedef struct {
         default:
             break;
     }
+    
+    choosedBrustTexturteType = type;
 }
 
 - (BOOL)resizeFromLayer:(CAEAGLLayer *)layer
@@ -607,7 +610,15 @@ typedef struct {
     [self.pointTracker addObject:[NSValue valueWithCGPoint:location]];
     
     if (self.vertexBuffersPools == nil) self.vertexBuffersPools = [[NSMutableArray alloc] init];
-    [self.vertexBuffersPools addObject:[NSArray arrayWithArray:self.vertexBuffers]];
+    
+    float red = brushColor[0];
+    float green = brushColor[1];
+    float blue = brushColor[2];
+    float alpha = brushColor[3];
+    
+    NSArray *arrayProperties = [[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:red], [NSNumber numberWithFloat:green], [NSNumber numberWithFloat:blue], [NSNumber numberWithFloat:alpha], [NSNumber numberWithInt:choosedBrustTexturteType], [NSNumber numberWithFloat:brushScale], [NSNumber numberWithFloat:brushStep], [NSArray arrayWithArray:self.vertexBuffers], nil];
+    
+    [self.vertexBuffersPools addObject:arrayProperties];
     [self.vertexBuffers removeAllObjects];
 }
 
@@ -649,8 +660,31 @@ typedef struct {
     
     // Render remaining vbos
     [self.vertexBuffersPools removeLastObject];
+    CGFloat lastBrush[4];
+    lastBrush[0] = brushColor[0];
+    lastBrush[1] = brushColor[1];
+    lastBrush[2] = brushColor[2];
+    lastBrush[3] = brushColor[3];
+    
+    CGFloat lastBrushScale = brushScale;
+    CGFloat lastBrushStep = brushStep;
+    
+    int lastBgTexture = choosedBrustTexturteType;
+    
     for (NSArray *array in self.vertexBuffersPools) {
-        for (NSData *vbo in array)
+        CGFloat tempBrush[4];
+        tempBrush[0] = [[array objectAtIndex:0] floatValue];
+        tempBrush[1] = [[array objectAtIndex:1] floatValue];
+        tempBrush[2] = [[array objectAtIndex:2] floatValue];
+        tempBrush[3] = [[array objectAtIndex:3] floatValue];
+        
+        brushScale = [[array objectAtIndex:4] floatValue];
+        brushStep = [[array objectAtIndex:5] floatValue];
+        
+        [self setBgTextTure:[[array objectAtIndex:4] integerValue]];
+        [self setBrushColorWithRed:tempBrush[0] green:tempBrush[1] blue:tempBrush[2] alpha:tempBrush[3]];
+        
+        for (NSData *vbo in [array objectAtIndex:7])
         {
             // Load data to the Vertex Buffer Object
             glBindBuffer(GL_ARRAY_BUFFER, vboId);
@@ -668,6 +702,11 @@ typedef struct {
 	// Display the buffer
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
 	[context presentRenderbuffer:GL_RENDERBUFFER_OES];
+    
+    brushScale = lastBrushScale;
+    brushStep = lastBrushStep;
+    [self setBgTextTure:lastBgTexture];
+    [self setBrushColorWithRed:lastBrush[0] green:lastBrush[1] blue:lastBrush[2] alpha:lastBrush[3]];
 }
 
 - (UIImage *) glToUIImage
