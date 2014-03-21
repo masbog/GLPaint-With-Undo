@@ -372,6 +372,7 @@ typedef struct {
 
 - (void)setBgTextTure:(int)type
 {
+    choosedBrustTexturteType = type;
     switch (type) {
         case 0:
             brushTexture = [self textureFromName:@"Eraser.png"];
@@ -392,8 +393,6 @@ typedef struct {
         default:
             break;
     }
-    
-    choosedBrustTexturteType = type;
 }
 
 - (BOOL)resizeFromLayer:(CAEAGLLayer *)layer
@@ -678,11 +677,15 @@ typedef struct {
         tempBrush[2] = [[array objectAtIndex:2] floatValue];
         tempBrush[3] = [[array objectAtIndex:3] floatValue];
         
-        brushScale = [[array objectAtIndex:4] floatValue];
-        brushStep = [[array objectAtIndex:5] floatValue];
+        NSLog(@"Last brush scale : %f, brush step : %f", brushScale, brushStep);
         
-        [self setBgTextTure:[[array objectAtIndex:4] integerValue]];
+        /*[self setBrushScale:[[array objectAtIndex:4] floatValue]];
+        [self setBrushStep:[[array objectAtIndex:5] floatValue]];
+        
+        NSLog(@"Temp brush scale : %f, brush step : %f", brushScale, brushStep);*/
+        
         [self setBrushColorWithRed:tempBrush[0] green:tempBrush[1] blue:tempBrush[2] alpha:tempBrush[3]];
+        //[self setBgTextTure:[[array objectAtIndex:4] integerValue]];
         
         for (NSData *vbo in [array objectAtIndex:7])
         {
@@ -703,10 +706,11 @@ typedef struct {
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
 	[context presentRenderbuffer:GL_RENDERBUFFER_OES];
     
-    brushScale = lastBrushScale;
-    brushStep = lastBrushStep;
-    [self setBgTextTure:lastBgTexture];
+    
+    //[self setBrushScale:lastBrushScale];
+    //[self setBrushStep:lastBrushStep];
     [self setBrushColorWithRed:lastBrush[0] green:lastBrush[1] blue:lastBrush[2] alpha:lastBrush[3]];
+    //[self setBgTextTure:lastBgTexture];
 }
 
 - (UIImage *) glToUIImage
